@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c3gnlhytqinrd"]
+
+[ext_resource type="Script" uid="uid://b0cjjgh7dhst3" path="res://scripts/ui/splash_screen.gd" id="1_m0ilf"]
+[ext_resource type="Texture2D" uid="uid://dhrn2rn78yxx8" path="res://logo studio.png" id="2_eina6"]
+
+[node name="SplashScreen" type="Control" unique_id=1759699582]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0ilf")
+
+[node name="Background" type="ColorRect" parent="." unique_id=6904748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="TextureRect" parent="." unique_id=193122642]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.32200003
+anchor_right = 0.6
+anchor_bottom = 0.67800003
+offset_top = 0.15997314
+offset_bottom = -0.16003418
+texture = ExtResource("2_eina6")
+expand_mode = 1

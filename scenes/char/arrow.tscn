@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cl3ovsdpht615"]
+
+[ext_resource type="Script" uid="uid://q0swx3v3t3ig" path="res://scripts/mode/arrow.gd" id="1_o2cxu"]
+[ext_resource type="Texture2D" uid="uid://3ivyns6l7tdg" path="res://assets/sprites/enemy/Export_Bow/Bow.png" id="2_87ljy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsusj"]
+radius = 8.0
+height = 64.0
+
+[node name="Arrow" type="Area2D" unique_id=1423211886]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_o2cxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1372724899]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_nsusj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=379522269]
+position = Vector2(2.3841858e-07, 4.7683716e-07)
+scale = Vector2(1.0526314, 0.8888889)
+texture = ExtResource("2_87ljy")

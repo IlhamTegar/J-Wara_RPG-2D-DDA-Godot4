@@ -1,0 +1,480 @@
+[gd_scene format=3 uid="uid://d1r10w4226w6b"]
+
+[ext_resource type="Texture2D" uid="uid://n20h743smsod" path="res://assets/sprites/ui/Interface dasar/Complete_UI_Book_Styles_Pack_Free/Complete_UI_Book_Styles_Pack_Free_v1.0/load dan save menu.png" id="1_ag8nk"]
+[ext_resource type="Texture2D" uid="uid://b1o5t1ipnc1ow" path="res://assets/sprites/ui/Interface dasar/Complete_UI_Book_Styles_Pack_Free/Complete_UI_Book_Styles_Pack_Free_v1.0/data (kiri).png" id="2_o070c"]
+[ext_resource type="FontFile" uid="uid://bs3rt0f2e1uoj" path="res://assets/sprites/font/DungeonFont.ttf" id="3_nytil"]
+[ext_resource type="Texture2D" uid="uid://cvyem1p6sgrod" path="res://assets/sprites/ui/Interface dasar/Complete_UI_Book_Styles_Pack_Free/Complete_UI_Book_Styles_Pack_Free_v1.0/data (kanan).png" id="4_xavtd"]
+[ext_resource type="Texture2D" uid="uid://cg6qivbrklgoa" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close.png" id="5_su1st"]
+[ext_resource type="Texture2D" uid="uid://bd55ibs4hp5o6" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close press.png" id="6_farvu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83tid"]
+texture = ExtResource("1_ag8nk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8sw0"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnwll"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_chxta"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_unaco"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81nce"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hj072"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5yu2"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ptsf3"]
+texture = ExtResource("2_o070c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aht68"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_boqas"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_si1as"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n4ny7"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vb4h"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h10i5"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0qut"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvv6k"]
+texture = ExtResource("4_xavtd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrgl4"]
+texture = ExtResource("5_su1st")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn3lk"]
+texture = ExtResource("6_farvu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ujhu"]
+texture = ExtResource("5_su1st")
+
+[node name="LoadGamePanel" type="Panel" unique_id=115756929]
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 0.133
+anchor_right = 0.86200005
+anchor_bottom = 0.88900006
+offset_left = 0.63998413
+offset_top = 0.23999786
+offset_right = 0.6398926
+offset_bottom = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_83tid")
+
+[node name="HalamanKiri" type="Control" parent="." unique_id=42143182]
+layout_mode = 1
+anchor_left = 0.037
+anchor_top = 0.044000003
+anchor_right = 0.5
+anchor_bottom = 0.92600006
+offset_left = 0.031999588
+offset_top = 0.06399727
+offset_bottom = 0.25598145
+
+[node name="Slot1_Button" type="Button" parent="HalamanKiri" unique_id=2092400122]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.117000006
+anchor_right = 0.92
+anchor_bottom = 0.3
+offset_top = -0.16000366
+theme_override_styles/normal = SubResource("StyleBoxTexture_g8sw0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jnwll")
+
+[node name="TitleLabel" type="Label" parent="HalamanKiri/Slot1_Button" unique_id=1334403606]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 1"
+
+[node name="WaveLabel" type="Label" parent="HalamanKiri/Slot1_Button" unique_id=1119510695]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 1"
+
+[node name="Slot2_Button" type="Button" parent="HalamanKiri" unique_id=692295471]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.333
+anchor_right = 0.92
+anchor_bottom = 0.517
+offset_top = 0.16000366
+offset_bottom = -0.16000366
+theme_override_styles/normal = SubResource("StyleBoxTexture_chxta")
+theme_override_styles/hover = SubResource("StyleBoxTexture_unaco")
+
+[node name="TitleLabel" type="Label" parent="HalamanKiri/Slot2_Button" unique_id=1873826159]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 2"
+
+[node name="WaveLabel" type="Label" parent="HalamanKiri/Slot2_Button" unique_id=857779559]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 2"
+
+[node name="Slot3_Button" type="Button" parent="HalamanKiri" unique_id=638462120]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.55
+anchor_right = 0.92
+anchor_bottom = 0.73300004
+offset_bottom = 0.15997314
+theme_override_styles/normal = SubResource("StyleBoxTexture_81nce")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hj072")
+
+[node name="TitleLabel" type="Label" parent="HalamanKiri/Slot3_Button" unique_id=2081354661]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 3"
+
+[node name="WaveLabel" type="Label" parent="HalamanKiri/Slot3_Button" unique_id=1197893093]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 3"
+
+[node name="Slot4_Button" type="Button" parent="HalamanKiri" unique_id=1225059608]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.767
+anchor_right = 0.92
+anchor_bottom = 0.95000005
+offset_top = -0.16000366
+offset_bottom = -3.0517578e-05
+theme_override_styles/normal = SubResource("StyleBoxTexture_x5yu2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ptsf3")
+
+[node name="TitleLabel" type="Label" parent="HalamanKiri/Slot4_Button" unique_id=1266001079]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 4"
+
+[node name="WaveLabel" type="Label" parent="HalamanKiri/Slot4_Button" unique_id=699590794]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 4"
+
+[node name="HalamanKanan" type="Control" parent="." unique_id=352743247]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.044000003
+anchor_right = 0.96300006
+anchor_bottom = 0.92600006
+offset_top = 0.06399727
+offset_right = -0.032043457
+offset_bottom = 0.25598145
+
+[node name="Slot5_Button" type="Button" parent="HalamanKanan" unique_id=1259395169]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.117000006
+anchor_right = 0.92
+anchor_bottom = 0.3
+offset_top = -0.16000366
+theme_override_styles/normal = SubResource("StyleBoxTexture_aht68")
+theme_override_styles/hover = SubResource("StyleBoxTexture_boqas")
+
+[node name="TitleLabel" type="Label" parent="HalamanKanan/Slot5_Button" unique_id=656890194]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 5"
+
+[node name="WaveLabel" type="Label" parent="HalamanKanan/Slot5_Button" unique_id=641523763]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 5"
+
+[node name="Slot6_Button" type="Button" parent="HalamanKanan" unique_id=400504604]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.333
+anchor_right = 0.92
+anchor_bottom = 0.517
+offset_top = 0.16000366
+offset_bottom = -0.16000366
+theme_override_styles/normal = SubResource("StyleBoxTexture_si1as")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n4ny7")
+
+[node name="TitleLabel" type="Label" parent="HalamanKanan/Slot6_Button" unique_id=1460715053]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 6"
+
+[node name="WaveLabel" type="Label" parent="HalamanKanan/Slot6_Button" unique_id=1129847022]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 6"
+
+[node name="Slot7_Button" type="Button" parent="HalamanKanan" unique_id=1540531654]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.55
+anchor_right = 0.92
+anchor_bottom = 0.73300004
+offset_bottom = 0.15997314
+theme_override_styles/normal = SubResource("StyleBoxTexture_3vb4h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h10i5")
+
+[node name="TitleLabel" type="Label" parent="HalamanKanan/Slot7_Button" unique_id=1077862729]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 7"
+
+[node name="WaveLabel" type="Label" parent="HalamanKanan/Slot7_Button" unique_id=1612314479]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 7"
+
+[node name="Slot8_Button" type="Button" parent="HalamanKanan" unique_id=1290737058]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.080000006
+anchor_top = 0.767
+anchor_right = 0.92
+anchor_bottom = 0.95000005
+offset_top = -0.16000366
+offset_bottom = -3.0517578e-05
+theme_override_styles/normal = SubResource("StyleBoxTexture_t0qut")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kvv6k")
+
+[node name="TitleLabel" type="Label" parent="HalamanKanan/Slot8_Button" unique_id=1612146874]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.18200001
+anchor_right = 0.92800003
+anchor_bottom = 0.44300002
+offset_left = -0.1280117
+offset_top = -0.016008377
+offset_right = -0.12802124
+offset_bottom = 0.015991211
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.47058824, 0.23529412, 0.26666668, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 8"
+
+[node name="WaveLabel" type="Label" parent="HalamanKanan/Slot8_Button" unique_id=747673765]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.455
+anchor_right = 0.92800003
+anchor_bottom = 0.716
+offset_left = -0.1280117
+offset_top = -0.040008545
+offset_right = -0.12802124
+offset_bottom = -0.008010864
+theme_override_colors/font_color = Color(0.9882353, 0.9882353, 0.9882353, 1)
+theme_override_colors/font_shadow_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+theme_override_fonts/font = ExtResource("3_nytil")
+theme_override_font_sizes/font_size = 22
+text = "Save Data 8"
+
+[node name="TutupLoadButton" type="Button" parent="HalamanKanan" unique_id=35580913]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.017
+anchor_right = 0.98100007
+anchor_bottom = 0.117000006
+offset_top = -0.16000175
+offset_right = -0.08004761
+offset_bottom = -0.16000366
+theme_override_styles/normal = SubResource("StyleBoxTexture_rrgl4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dn3lk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ujhu")

@@ -1,0 +1,429 @@
+[gd_scene format=3 uid="uid://d30uare2rcqrc"]
+
+[ext_resource type="Script" uid="uid://8gajgwjlvrkn" path="res://scripts/ui/main_menu.gd" id="1_fsom3"]
+[ext_resource type="Texture2D" uid="uid://v88jjscqb6oy" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/button menu.png" id="2_0ebjn"]
+[ext_resource type="FontFile" uid="uid://bs3rt0f2e1uoj" path="res://assets/sprites/font/DungeonFont.ttf" id="2_ob46e"]
+[ext_resource type="Texture2D" uid="uid://dgpg2i8haq4x5" path="res://assets/sprites/environment/combat/layers_fullcolor/background.png" id="2_qel0l"]
+[ext_resource type="Texture2D" uid="uid://nd1hnlmb46xu" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/panel.png" id="4_3ovsr"]
+[ext_resource type="Texture2D" uid="uid://cpuvrxu8culhp" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/isi nama.png" id="5_4xg86"]
+[ext_resource type="Texture2D" uid="uid://dut4txgqebhdv" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/button konfirmasi.png" id="5_5seab"]
+[ext_resource type="Texture2D" uid="uid://bed3siys3t067" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/button konfirmasi pressed.png" id="6_4xg86"]
+[ext_resource type="Texture2D" uid="uid://cg6qivbrklgoa" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close.png" id="8_thkx5"]
+[ext_resource type="Texture2D" uid="uid://bd55ibs4hp5o6" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close press.png" id="9_x2yjq"]
+[ext_resource type="PackedScene" uid="uid://d1r10w4226w6b" path="res://scenes/main_menu/buku_save_load.tscn" id="10_lqpn7"]
+[ext_resource type="AudioStream" uid="uid://3yovtuy0fpb8" path="res://assets/audio/music/main-menu.mp3" id="13_dn3lk"]
+[ext_resource type="PackedScene" uid="uid://1srd88n1hbvp" path="res://scenes/ui/settings/SettingsMenu.tscn" id="13_rrgl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ob46e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqeha"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wem23"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ovsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5seab"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(0, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xg86"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(176, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thkx5"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(352, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2yjq"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(528, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqpn7"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(704, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qel0l"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(880, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrgl4"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(1056, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn3lk"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(1232, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ujhu"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(1408, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnpsp"]
+atlas = ExtResource("2_0ebjn")
+region = Rect2(1584, 0, 176, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1gy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5seab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xg86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thkx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2yjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqpn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qel0l")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrgl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn3lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ujhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnpsp")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 6.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thkx5"]
+texture = ExtResource("4_3ovsr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qel0l"]
+texture = ExtResource("5_4xg86")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2yjq"]
+texture = ExtResource("5_5seab")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqpn7"]
+texture = ExtResource("6_4xg86")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ovsr"]
+texture = ExtResource("5_5seab")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrgl4"]
+texture = ExtResource("8_thkx5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn3lk"]
+texture = ExtResource("9_x2yjq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ujhu"]
+texture = ExtResource("8_thkx5")
+
+[node name="MainMenu" type="Control" unique_id=1956196214]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsom3")
+gameplay_scene = "uid://e0utjpvjitoq"
+
+[node name="Background" type="TextureRect" parent="." unique_id=901081241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qel0l")
+
+[node name="GameTitle" type="Label" parent="." unique_id=886600409]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.069000006
+anchor_right = 0.90000004
+anchor_bottom = 0.15400001
+offset_top = 0.31999588
+offset_bottom = 0.11998749
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 60
+text = "J 'Wara"
+vertical_alignment = 1
+
+[node name="sub-GameTitle" type="Label" parent="." unique_id=757550341]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.12200001
+anchor_right = 0.90000004
+anchor_bottom = 0.21100001
+offset_left = 6.0
+offset_top = 15.159996
+offset_right = 6.0
+offset_bottom = 12.079987
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 46
+text = ": Penyelamat Desa"
+vertical_alignment = 1
+
+[node name="NewGame_Button" type="Button" parent="." unique_id=404245142]
+custom_minimum_size = Vector2(144, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.31100002
+anchor_right = 0.246
+anchor_bottom = 0.367
+offset_top = 0.07998657
+offset_right = -42.880005
+offset_bottom = -8.240021
+scale = Vector2(1.3, 1.3)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ob46e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uqeha")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wem23")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ovsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NewGame_Button" unique_id=718862733]
+position = Vector2(72, 16)
+sprite_frames = SubResource("SpriteFrames_a1gy5")
+animation = &"stand"
+
+[node name="Label" type="Label" parent="NewGame_Button" unique_id=1683950036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 24
+text = "New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadGame_Button" type="Button" parent="." unique_id=561754085]
+custom_minimum_size = Vector2(144, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.41700003
+anchor_right = 0.246
+anchor_bottom = 0.47400004
+offset_top = -0.24002075
+offset_right = -42.880005
+offset_bottom = -9.280029
+scale = Vector2(1.3, 1.3)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ob46e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uqeha")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wem23")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ovsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadGame_Button" unique_id=150027250]
+position = Vector2(72, 16)
+sprite_frames = SubResource("SpriteFrames_a1gy5")
+animation = &"stand"
+
+[node name="Label" type="Label" parent="LoadGame_Button" unique_id=1306368968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 24
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Setting_Button" type="Button" parent="." unique_id=1432819968]
+custom_minimum_size = Vector2(144, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.51900005
+anchor_right = 0.246
+anchor_bottom = 0.577
+offset_top = 0.3199463
+offset_right = -42.880005
+offset_bottom = -9.440002
+scale = Vector2(1.3, 1.3)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ob46e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uqeha")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wem23")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ovsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Setting_Button" unique_id=1530861605]
+position = Vector2(72, 16)
+sprite_frames = SubResource("SpriteFrames_a1gy5")
+animation = &"stand"
+
+[node name="Label" type="Label" parent="Setting_Button" unique_id=2034094219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 24
+text = "Pengaturan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit_Button" type="Button" parent="." unique_id=286379041]
+custom_minimum_size = Vector2(144, 32)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.62200004
+anchor_right = 0.246
+anchor_bottom = 0.683
+offset_top = 2.1599731
+offset_right = -42.880005
+offset_bottom = -9.76001
+scale = Vector2(1.3, 1.3)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ob46e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uqeha")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wem23")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ovsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Exit_Button" unique_id=865776684]
+position = Vector2(72, 16)
+sprite_frames = SubResource("SpriteFrames_a1gy5")
+animation = &"stand"
+
+[node name="Label" type="Label" parent="Exit_Button" unique_id=764728901]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 24
+text = "Keluar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI_Layer" type="CanvasLayer" parent="." unique_id=423145925]
+
+[node name="BlackOverlay" type="ColorRect" parent="UI_Layer" unique_id=1703134028]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.07058824, 0.07058824, 0.6392157)
+
+[node name="LoadGamePanel" parent="UI_Layer" unique_id=115756929 instance=ExtResource("10_lqpn7")]
+visible = false
+
+[node name="NameInputPanel" type="Panel" parent="UI_Layer" unique_id=558311007]
+visible = false
+offset_left = 448.0
+offset_top = 72.0
+offset_right = 831.0
+offset_bottom = 632.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_thkx5")
+
+[node name="Label" type="Label" parent="UI_Layer/NameInputPanel" unique_id=2131670142]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.063
+anchor_top = 0.216
+anchor_right = 0.94000006
+anchor_bottom = 0.307
+offset_left = -0.12899971
+offset_top = 0.04799652
+offset_right = -0.020019531
+offset_bottom = 0.09599304
+theme_override_colors/font_shadow_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 30
+text = "Masukkan Nama Karakter:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameLineEdit" type="LineEdit" parent="UI_Layer/NameInputPanel" unique_id=1819919115]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.45800003
+anchor_right = 0.87700003
+anchor_bottom = 0.549
+offset_left = 0.125
+offset_top = -0.17601013
+offset_right = 0.10897827
+offset_bottom = -0.12802124
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxTexture_qel0l")
+
+[node name="ConfirmNameButton" type="Button" parent="UI_Layer/NameInputPanel" unique_id=699848588]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.272
+anchor_top = 0.69500005
+anchor_right = 0.731
+anchor_bottom = 0.799
+offset_left = -0.1760025
+offset_top = -0.040039063
+offset_right = 0.027008057
+offset_bottom = 8.559998
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("2_ob46e")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxTexture_x2yjq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lqpn7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3ovsr")
+text = "konfirmasi"
+
+[node name="TutupButton" type="Button" parent="UI_Layer/NameInputPanel" unique_id=1585066242]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85600007
+anchor_top = 0.029000001
+anchor_right = 0.94000006
+anchor_bottom = 0.08400001
+offset_left = 0.15197754
+offset_top = -0.24000168
+offset_right = -0.93603516
+offset_bottom = -0.04000473
+theme_override_styles/normal = SubResource("StyleBoxTexture_rrgl4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dn3lk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4ujhu")
+
+[node name="SettingsMenu" parent="UI_Layer" unique_id=180527710 instance=ExtResource("13_rrgl4")]
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=1101029143]
+stream = ExtResource("13_dn3lk")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

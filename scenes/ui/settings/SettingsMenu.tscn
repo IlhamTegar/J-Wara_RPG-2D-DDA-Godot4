@@ -1,0 +1,660 @@
+[gd_scene format=3 uid="uid://1srd88n1hbvp"]
+
+[ext_resource type="Script" uid="uid://b3a13mnp425ym" path="res://scripts/ui/settings_menu.gd" id="1_8r8w2"]
+[ext_resource type="Texture2D" uid="uid://nd1hnlmb46xu" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/panel.png" id="1_nkirh"]
+[ext_resource type="Texture2D" uid="uid://dut4txgqebhdv" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/button konfirmasi.png" id="2_8r8w2"]
+[ext_resource type="Texture2D" uid="uid://bed3siys3t067" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/button konfirmasi pressed.png" id="3_lp11r"]
+[ext_resource type="Texture2D" uid="uid://dojorqcprr0t0" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/judul pengaturan(display).png" id="4_cd8wc"]
+[ext_resource type="Texture2D" uid="uid://bpljbxq3483pn" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/judul pengaturan(audio).png" id="5_x67tu"]
+[ext_resource type="Texture2D" uid="uid://c77elyc2nvt35" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/judul pengaturan(controls).png" id="6_exvbt"]
+[ext_resource type="Texture2D" uid="uid://cg6qivbrklgoa" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close.png" id="7_6xnhy"]
+[ext_resource type="Texture2D" uid="uid://bd55ibs4hp5o6" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/close press.png" id="8_rt4jk"]
+[ext_resource type="Texture2D" uid="uid://bqifgn1j6me2f" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/panel pengaturan.png" id="9_g0ooc"]
+[ext_resource type="FontFile" uid="uid://bs3rt0f2e1uoj" path="res://assets/sprites/font/DungeonFont.ttf" id="10_d1j1g"]
+[ext_resource type="Texture2D" uid="uid://bohglriyrce7h" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/ui mbuat audio.png" id="11_5nb4h"]
+[ext_resource type="Texture2D" uid="uid://c140m70r516p2" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/ui mbuat audio(fill).png" id="12_ka0o6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v0nw1"]
+texture = ExtResource("1_nkirh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50lgh"]
+content_margin_left = 30.0
+content_margin_top = 20.0
+content_margin_right = 30.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2unv1"]
+texture = ExtResource("3_lp11r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w03uo"]
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qs5ei"]
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_du0o1"]
+texture = ExtResource("3_lp11r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c872p"]
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6mj45"]
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdjft"]
+texture = ExtResource("3_lp11r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2a4v"]
+texture = ExtResource("2_8r8w2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3p0q2"]
+texture = ExtResource("7_6xnhy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dixi8"]
+texture = ExtResource("8_rt4jk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y6tj4"]
+texture = ExtResource("7_6xnhy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_alehq"]
+texture = ExtResource("9_g0ooc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvdum"]
+texture = ExtResource("7_6xnhy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwmhp"]
+texture = ExtResource("8_rt4jk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6rlwq"]
+texture = ExtResource("7_6xnhy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ha0ac"]
+texture = ExtResource("9_g0ooc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ab43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jfnv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ek5dj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bmuku"]
+texture = ExtResource("7_6xnhy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yohkt"]
+texture = ExtResource("8_rt4jk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sewib"]
+texture = ExtResource("7_6xnhy")
+
+[node name="SettingsMenu" type="Control" unique_id=180527710]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8r8w2")
+
+[node name="SettingsMenuPanel" type="Panel" parent="." unique_id=2063680979]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37500003
+anchor_top = 0.18900001
+anchor_right = 0.625
+anchor_bottom = 0.72200006
+offset_left = -3.0517578e-05
+offset_top = -0.08000183
+offset_bottom = 0.15997314
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v0nw1")
+
+[node name="DisplayButton" type="Button" parent="SettingsMenuPanel" unique_id=1053751188]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.22500001
+anchor_right = 0.725
+anchor_bottom = 0.4
+theme_override_styles/normal = SubResource("StyleBoxTexture_50lgh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2unv1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w03uo")
+
+[node name="TextureRect" type="TextureRect" parent="SettingsMenuPanel/DisplayButton" unique_id=812710688]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27800003
+anchor_top = 0.351
+anchor_right = 0.72200006
+anchor_bottom = 0.595
+offset_left = -0.03200531
+offset_top = 0.012788773
+offset_right = 64.03199
+offset_bottom = 16.409565
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_cd8wc")
+
+[node name="AudioButton" type="Button" parent="SettingsMenuPanel" unique_id=1617245653]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.425
+anchor_right = 0.725
+anchor_bottom = 0.6
+theme_override_styles/normal = SubResource("StyleBoxTexture_qs5ei")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_du0o1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c872p")
+
+[node name="TextureRect2" type="TextureRect" parent="SettingsMenuPanel/AudioButton" unique_id=1773416281]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.354
+anchor_right = 0.674
+anchor_bottom = 0.62200004
+offset_left = 0.040000916
+offset_top = 0.0112018585
+offset_right = 47.944
+offset_bottom = 18.001602
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_x67tu")
+
+[node name="ControlsButton" type="Button" parent="SettingsMenuPanel" unique_id=2134172894]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.625
+anchor_right = 0.725
+anchor_bottom = 0.8
+theme_override_styles/normal = SubResource("StyleBoxTexture_6mj45")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kdjft")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b2a4v")
+
+[node name="TextureRect3" type="TextureRect" parent="SettingsMenuPanel/ControlsButton" unique_id=333751612]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27800003
+anchor_top = 0.35700002
+anchor_right = 0.72200006
+anchor_bottom = 0.592
+offset_left = -0.03200531
+offset_top = 0.009580612
+offset_right = 64.03199
+offset_bottom = 15.811146
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_exvbt")
+
+[node name="TutupSettingsButton" type="Button" parent="SettingsMenuPanel" unique_id=1771740655]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.82500005
+anchor_top = 0.025
+anchor_right = 0.95000005
+anchor_bottom = 0.13000001
+offset_bottom = 0.07998657
+theme_override_styles/normal = SubResource("StyleBoxTexture_3p0q2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dixi8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y6tj4")
+
+[node name="DisplaySettingsPanel" type="Panel" parent="." unique_id=1160701112]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32500002
+anchor_top = 0.089
+anchor_right = 0.675
+anchor_bottom = 0.88900006
+offset_left = -3.0517578e-05
+offset_top = -0.08000183
+offset_right = 6.1035156e-05
+offset_bottom = -0.08001709
+theme_override_styles/panel = SubResource("StyleBoxTexture_alehq")
+
+[node name="TextureRect" type="TextureRect" parent="DisplaySettingsPanel" unique_id=89141220]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33900002
+anchor_top = 0.042000003
+anchor_right = 0.679
+anchor_bottom = 0.125
+offset_left = 0.12799072
+offset_top = -0.19200134
+offset_right = -0.1920166
+texture = ExtResource("4_cd8wc")
+
+[node name="DisplayLabel" type="Label" parent="DisplaySettingsPanel" unique_id=926134008]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.208
+anchor_right = 0.411
+anchor_bottom = 0.25300002
+offset_left = -0.06400299
+offset_top = 0.19200134
+offset_right = -80.128006
+offset_bottom = -2.728012
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Screen Mode"
+
+[node name="DisplayModeButton" type="Button" parent="DisplaySettingsPanel" unique_id=1579468539]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.264
+anchor_right = 0.71400005
+anchor_bottom = 0.319
+offset_left = -0.12800598
+offset_top = -0.06399536
+offset_right = 0.12799072
+offset_bottom = 0.2559967
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+text = "Windowed"
+
+[node name="VsyncLabel" type="Label" parent="DisplaySettingsPanel" unique_id=1313167026]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.37500003
+anchor_right = 0.272
+anchor_bottom = 0.41700003
+offset_left = -0.06400299
+offset_top = -1.5258789e-05
+offset_right = 0.14399719
+offset_bottom = 1.8079834
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Vsync"
+
+[node name="VsyncButton" type="Button" parent="DisplaySettingsPanel" unique_id=1765486392]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.43100002
+anchor_right = 0.71400005
+anchor_bottom = 0.48600003
+offset_left = -0.12800598
+offset_top = -0.25601196
+offset_right = 0.12799072
+offset_bottom = 0.06399536
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+text = "On"
+
+[node name="TutupDisplayButton" type="Button" parent="DisplaySettingsPanel" unique_id=1590494879]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87500006
+anchor_top = 0.028
+anchor_right = 0.94600004
+anchor_bottom = 0.083000004
+offset_left = -3.0517578e-05
+offset_top = -0.12800026
+offset_right = 0.19198608
+offset_bottom = 0.19199753
+theme_override_styles/normal = SubResource("StyleBoxTexture_rvdum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pwmhp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6rlwq")
+
+[node name="AudioSettingsPanel" type="Panel" parent="." unique_id=1867222755]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32500002
+anchor_top = 0.089
+anchor_right = 0.675
+anchor_bottom = 0.88900006
+offset_left = -3.0517578e-05
+offset_top = -0.08000183
+offset_bottom = -0.08001709
+theme_override_styles/panel = SubResource("StyleBoxTexture_ha0ac")
+
+[node name="TextureRect" type="TextureRect" parent="AudioSettingsPanel" unique_id=1184419498]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 24.0
+offset_right = 304.0
+offset_bottom = 80.0
+texture = ExtResource("5_x67tu")
+
+[node name="MasterLabel" type="Label" parent="AudioSettingsPanel" unique_id=1331597150]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.22200002
+anchor_right = 0.384
+anchor_bottom = 0.259
+offset_left = -0.06400299
+offset_top = 0.12799072
+offset_right = -0.03199768
+offset_bottom = -0.18400574
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7882353, 0.54509807, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+text = "Master Audio"
+
+[node name="MasterSlider" type="TextureProgressBar" parent="AudioSettingsPanel" unique_id=1635862271]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.264
+anchor_right = 0.768
+anchor_bottom = 0.29200003
+offset_left = -0.06400299
+offset_top = -0.06399536
+offset_right = -0.06399536
+offset_bottom = -0.1920166
+step = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_5nb4h")
+texture_progress = ExtResource("12_ka0o6")
+
+[node name="MasterSliderInput" type="HSlider" parent="AudioSettingsPanel" unique_id=540752531]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.264
+anchor_right = 0.768
+anchor_bottom = 0.29200003
+offset_left = -0.06400299
+offset_top = -0.06399536
+offset_right = -0.06399536
+offset_bottom = -0.1920166
+theme_override_styles/slider = SubResource("StyleBoxEmpty_0ab43")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_8jfnv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ek5dj")
+step = 5.0
+
+[node name="MusicLabel" type="Label" parent="AudioSettingsPanel" unique_id=1159947850]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.36100003
+anchor_right = 0.25
+anchor_bottom = 0.40100002
+offset_left = -0.06400299
+offset_top = 0.0639801
+offset_bottom = 0.023986816
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7882353, 0.54509807, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="MusicSlider" type="TextureProgressBar" parent="AudioSettingsPanel" unique_id=1290878797]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.40300003
+anchor_right = 0.768
+anchor_bottom = 0.43100002
+offset_left = -0.06400299
+offset_top = -0.12802124
+offset_right = -0.06399536
+offset_bottom = -0.25601196
+step = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_5nb4h")
+texture_progress = ExtResource("12_ka0o6")
+
+[node name="MusicSliderInput" type="HSlider" parent="AudioSettingsPanel" unique_id=549564616]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.40300003
+anchor_right = 0.768
+anchor_bottom = 0.43100002
+offset_left = -0.06400299
+offset_top = -0.12802124
+offset_right = -0.06399536
+offset_bottom = -0.25601196
+theme_override_styles/slider = SubResource("StyleBoxEmpty_0ab43")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_8jfnv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ek5dj")
+step = 5.0
+
+[node name="SFXLabel" type="Label" parent="AudioSettingsPanel" unique_id=890567382]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.5
+anchor_right = 0.23200001
+anchor_bottom = 0.54
+offset_left = -0.06400299
+offset_right = 0.06399536
+offset_bottom = -0.040008545
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7882353, 0.54509807, 0.36078432, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="SFXSlider" type="TextureProgressBar" parent="AudioSettingsPanel" unique_id=264015889]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.54200006
+anchor_right = 0.768
+anchor_bottom = 0.569
+offset_left = -0.06400299
+offset_top = -0.1920166
+offset_right = -0.06399536
+offset_bottom = 0.25598145
+step = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_5nb4h")
+texture_progress = ExtResource("12_ka0o6")
+
+[node name="SFXSliderInput" type="HSlider" parent="AudioSettingsPanel" unique_id=1109110163]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.54200006
+anchor_right = 0.768
+anchor_bottom = 0.569
+offset_left = -0.06400299
+offset_top = -0.1920166
+offset_right = -0.06399536
+offset_bottom = 0.25598145
+theme_override_styles/slider = SubResource("StyleBoxEmpty_0ab43")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_8jfnv")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_ek5dj")
+step = 5.0
+
+[node name="TutupAudioButton" type="Button" parent="AudioSettingsPanel" unique_id=653611357]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87500006
+anchor_top = 0.028
+anchor_right = 0.94600004
+anchor_bottom = 0.083000004
+offset_left = -3.0517578e-05
+offset_top = -0.12800026
+offset_right = 0.19198608
+offset_bottom = 0.19199753
+theme_override_styles/normal = SubResource("StyleBoxTexture_bmuku")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yohkt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sewib")
+
+[node name="ControlsPanel" type="Panel" parent="." unique_id=861508304]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32500002
+anchor_top = 0.089
+anchor_right = 0.675
+anchor_bottom = 0.88900006
+offset_left = -3.0517578e-05
+offset_top = -0.08000183
+offset_bottom = -0.08001709
+theme_override_styles/panel = SubResource("StyleBoxTexture_alehq")
+
+[node name="TextureRect" type="TextureRect" parent="ControlsPanel" unique_id=1487978165]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33900002
+anchor_top = 0.042000003
+anchor_right = 0.679
+anchor_bottom = 0.125
+offset_left = 0.12799072
+offset_top = -0.19200134
+offset_right = -0.1920166
+texture = ExtResource("6_exvbt")
+
+[node name="Bergerak" type="Label" parent="ControlsPanel" unique_id=1425906725]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 120.0
+offset_right = 104.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "W A S D = Bergerak"
+
+[node name="Pause Game" type="Label" parent="ControlsPanel" unique_id=817043001]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 152.0
+offset_right = 122.0
+offset_bottom = 178.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "ESC = Pause Game"
+
+[node name="Serang" type="Label" parent="ControlsPanel" unique_id=59318872]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 225.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Serang"
+
+[node name="Serang_Btn" type="Button" parent="ControlsPanel" unique_id=2056307099]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 216.0
+offset_right = 384.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+alignment = 0
+
+[node name="Parry" type="Label" parent="ControlsPanel" unique_id=283685344]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 225.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Parry"
+
+[node name="Parry_Btn" type="Button" parent="ControlsPanel" unique_id=1232245343]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 280.0
+offset_right = 384.0
+offset_bottom = 312.0
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+alignment = 0
+
+[node name="Dodge" type="Label" parent="ControlsPanel" unique_id=84634891]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 225.0
+offset_bottom = 346.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Dodge"
+
+[node name="Dodge_Btn" type="Button" parent="ControlsPanel" unique_id=1856447293]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 344.0
+offset_right = 384.0
+offset_bottom = 376.0
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+alignment = 0
+
+[node name="Interaksi" type="Label" parent="ControlsPanel" unique_id=1105339388]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 225.0
+offset_bottom = 410.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Interaksi"
+
+[node name="Interaksi_Btn" type="Button" parent="ControlsPanel" unique_id=202901372]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 408.0
+offset_right = 384.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+alignment = 0
+
+[node name="Heal" type="Label" parent="ControlsPanel" unique_id=406860930]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 225.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0.105882354, 0.13333334, 0.21176471, 1)
+theme_override_colors/font_shadow_color = Color(0.7019608, 0.49411765, 0.34117648, 1)
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 25
+text = "Inventory/Tas"
+
+[node name="Heal_Btn" type="Button" parent="ControlsPanel" unique_id=1560720657]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 472.0
+offset_right = 384.0
+offset_bottom = 504.0
+theme_override_fonts/font = ExtResource("10_d1j1g")
+theme_override_font_sizes/font_size = 20
+alignment = 0
+
+[node name="TutupControlsButton" type="Button" parent="ControlsPanel" unique_id=1388814939]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87500006
+anchor_top = 0.028
+anchor_right = 0.94600004
+anchor_bottom = 0.083000004
+offset_left = -3.0517578e-05
+offset_top = -0.12800026
+offset_right = 0.19198608
+offset_bottom = 0.19199753
+theme_override_styles/normal = SubResource("StyleBoxTexture_rvdum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pwmhp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6rlwq")

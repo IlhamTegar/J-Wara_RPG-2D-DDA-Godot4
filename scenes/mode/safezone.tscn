@@ -1,0 +1,295 @@
+[gd_scene format=3 uid="uid://e0utjpvjitoq"]
+
+[ext_resource type="Script" uid="uid://345cqafojkdx" path="res://scripts/mode/safezone.gd" id="1_dxqq0"]
+[ext_resource type="Texture2D" uid="uid://b4bssa6c0ei6e" path="res://assets/sprites/environment/save zone/tanah.png" id="2_72j7v"]
+[ext_resource type="Script" uid="uid://bv7yv8hau5ctj" path="res://scripts/mode/rumah_save.gd" id="4_jek06"]
+[ext_resource type="Texture2D" uid="uid://ck2ejqvudy85e" path="res://assets/sprites/environment/save zone/house-a.png" id="5_6qqqd"]
+[ext_resource type="FontFile" uid="uid://bs3rt0f2e1uoj" path="res://assets/sprites/font/DungeonFont.ttf" id="6_s7nk2"]
+[ext_resource type="PackedScene" uid="uid://cxrejrrp821vj" path="res://scenes/main_menu/pause_menu.tscn" id="7_idvrw"]
+[ext_resource type="PackedScene" uid="uid://d1r10w4226w6b" path="res://scenes/main_menu/buku_save_load.tscn" id="8_6qqqd"]
+[ext_resource type="Texture2D" uid="uid://b31nq6lukp5us" path="res://assets/sprites/environment/combat/layers_fullcolor/sky_fc.png" id="9_s7nk2"]
+[ext_resource type="PackedScene" uid="uid://dy3pabtg06pnj" path="res://scenes/ui/toko_panel.tscn" id="9_yoe8e"]
+[ext_resource type="Texture2D" uid="uid://daii8yhoveqax" path="res://assets/sprites/environment/save zone/layer1.png" id="10_cmwyy"]
+[ext_resource type="Texture2D" uid="uid://bpmydsvl6v07c" path="res://assets/sprites/environment/save zone/house-b.png" id="10_l5gqx"]
+[ext_resource type="Texture2D" uid="uid://dxhufjmia0h0k" path="res://assets/sprites/environment/save zone/house-c.png" id="11_2j6rt"]
+[ext_resource type="Texture2D" uid="uid://dhlay2udpovsc" path="res://assets/sprites/environment/combat/layers_fullcolor/far_mountains_fc.png" id="11_nckfy"]
+[ext_resource type="Texture2D" uid="uid://w54yq2tu22r6" path="res://assets/sprites/environment/save zone/Gemini_Generated_Image_s9ok7rs9ok7rs9ok.png" id="12_1ugdc"]
+[ext_resource type="Texture2D" uid="uid://ck5td1kgfigt8" path="res://assets/sprites/environment/combat/layers_fullcolor/grassy_mountains_fc.png" id="12_yoe8e"]
+[ext_resource type="Texture2D" uid="uid://bs2l23iuc0ahj" path="res://assets/sprites/environment/combat/layers_fullcolor/clouds_mid_fc.png" id="13_afptj"]
+[ext_resource type="Texture2D" uid="uid://m20dw7g13t86" path="res://assets/sprites/environment/save zone/gerbang-layer depan.png" id="13_y8mqn"]
+[ext_resource type="PackedScene" uid="uid://cmwltt6h0m8tm" path="res://scenes/ui/merchant.tscn" id="19_afptj"]
+[ext_resource type="PackedScene" uid="uid://cijaykhfbn1tj" path="res://scenes/karakter/player/player_safezone.tscn" id="19_yoe8e"]
+[ext_resource type="AudioStream" uid="uid://b56o3qihwf5kg" path="res://assets/audio/music/safe-zone.mp3" id="20_afptj"]
+[ext_resource type="PackedScene" uid="uid://duwfwmode6t2c" path="res://scenes/ui/research_dashboard.tscn" id="21_1ltfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ojqm"]
+size = Vector2(1281, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qqqd"]
+size = Vector2(32, 72)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jek06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrcrb"]
+radius = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoe8e"]
+bg_color = Color(0.5764706, 0.39215687, 0.21568628, 1)
+
+[node name="Safezone" type="Node2D" unique_id=1893584906]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_dxqq0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=349687640]
+texture_repeat = 2
+offset_top = 536.0
+offset_right = 1600.0
+offset_bottom = 617.0
+texture = ExtResource("2_72j7v")
+stretch_mode = 1
+
+[node name="LantaiFisik" type="StaticBody2D" parent="." unique_id=564147373]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LantaiFisik" unique_id=669683530]
+position = Vector2(639.5, 550)
+shape = SubResource("RectangleShape2D_6ojqm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LantaiFisik" unique_id=1851083620]
+position = Vector2(-8, 520)
+shape = SubResource("RectangleShape2D_6qqqd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LantaiFisik" unique_id=865241315]
+position = Vector2(1296, 504)
+shape = SubResource("RectangleShape2D_6qqqd")
+
+[node name="PortalCombat" type="Area2D" parent="." unique_id=2095868890]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalCombat" unique_id=1349598522]
+position = Vector2(1264, 520)
+shape = SubResource("CapsuleShape2D_jek06")
+
+[node name="RumahSave" type="Area2D" parent="." unique_id=425632894]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(72, 400)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_jek06")
+
+[node name="Sprite2D" type="Sprite2D" parent="RumahSave" unique_id=1153136733]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_6qqqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RumahSave" unique_id=1833442862]
+position = Vector2(32, 104)
+shape = SubResource("CircleShape2D_vrcrb")
+
+[node name="Label" type="Label" parent="RumahSave" unique_id=270615043]
+offset_left = 16.0
+offset_right = 56.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+theme_override_colors/font_shadow_color = Color(0.7882353, 0.7882353, 0.7882353, 1)
+theme_override_fonts/font = ExtResource("6_s7nk2")
+theme_override_font_sizes/font_size = 40
+text = "F"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="." unique_id=1148454124 instance=ExtResource("7_idvrw")]
+visible = false
+
+[node name="UI_Layer" type="CanvasLayer" parent="." unique_id=1394092987]
+
+[node name="BukuSavePanel" parent="UI_Layer" unique_id=115756929 instance=ExtResource("8_6qqqd")]
+visible = false
+
+[node name="TokoPanel" parent="UI_Layer" unique_id=1280747444 instance=ExtResource("9_yoe8e")]
+visible = false
+
+[node name="TutorialPanelSafezone" type="Panel" parent="UI_Layer" unique_id=1837385058]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.089
+anchor_right = 0.85
+anchor_bottom = 0.88900006
+offset_top = -0.08000183
+offset_bottom = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoe8e")
+
+[node name="JudulLabel" type="Label" parent="UI_Layer/TutorialPanelSafezone" unique_id=971758107]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21400002
+anchor_top = 0.097
+anchor_right = 0.786
+anchor_bottom = 0.18100001
+offset_left = 0.25598145
+offset_top = 0.12799835
+offset_right = -0.25598145
+offset_bottom = -0.25600433
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialTexture" type="TextureRect" parent="UI_Layer/TutorialPanelSafezone" unique_id=1382677257]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.18100001
+anchor_right = 0.71400005
+anchor_bottom = 0.55600005
+offset_left = -0.25601196
+offset_top = -0.25600433
+offset_right = 0.25598145
+offset_bottom = -0.25604248
+mouse_filter = 2
+expand_mode = 2
+
+[node name="DeskripsiLabel" type="Label" parent="UI_Layer/TutorialPanelSafezone" unique_id=37860503]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10700001
+anchor_top = 0.583
+anchor_right = 0.89300007
+anchor_bottom = 0.694
+offset_left = 0.12799072
+offset_top = 0.19198608
+offset_right = -0.12805176
+offset_bottom = 0.25598145
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SelanjutnyaButton" type="Button" parent="UI_Layer/TutorialPanelSafezone" unique_id=1463882064]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35700002
+anchor_top = 0.76400006
+anchor_right = 0.643
+anchor_bottom = 0.84700006
+offset_left = 0.12799072
+offset_top = -0.06402588
+offset_right = -0.12799072
+offset_bottom = 0.1279602
+text = "Selanjutnya"
+
+[node name="TutupTutoButton" type="Button" parent="UI_Layer/TutorialPanelSafezone" unique_id=1382325608]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35700002
+anchor_top = 0.76400006
+anchor_right = 0.643
+anchor_bottom = 0.84700006
+offset_left = 0.12799072
+offset_top = -0.06402588
+offset_right = -0.12799072
+offset_bottom = 0.1279602
+text = "Mulai Petualangan"
+
+[node name="Enviroment" type="Node2D" parent="." unique_id=404029036]
+
+[node name="Background" type="Node2D" parent="Enviroment" unique_id=1659619797]
+
+[node name="TextureRect2" type="Sprite2D" parent="Enviroment/Background" unique_id=587355987]
+z_index = -7
+position = Vector2(800, 362)
+scale = Vector2(4.1666665, 3.351852)
+texture = ExtResource("9_s7nk2")
+
+[node name="TextureRect3" type="Sprite2D" parent="Enviroment/Background" unique_id=1281761733]
+z_index = -1
+texture_filter = 1
+position = Vector2(602, 472)
+scale = Vector2(1, 0.804)
+texture = ExtResource("10_cmwyy")
+
+[node name="TextureRect4" type="Sprite2D" parent="Enviroment/Background" unique_id=1128222439]
+z_index = -3
+texture_filter = 1
+position = Vector2(640, 304)
+scale = Vector2(3.3333333, 3.3333335)
+texture = ExtResource("11_nckfy")
+
+[node name="TextureRect5" type="Sprite2D" parent="Enviroment/Background" unique_id=1048609486]
+z_index = -2
+texture_filter = 1
+position = Vector2(640, 279.41602)
+scale = Vector2(3.3333333, 2.5871854)
+texture = ExtResource("12_yoe8e")
+
+[node name="TextureRect7" type="Sprite2D" parent="Enviroment/Background" unique_id=524882504]
+z_index = -2
+texture_filter = 1
+position = Vector2(640, 279.41602)
+scale = Vector2(3.3333333, 2.5871854)
+
+[node name="ColorRect" type="ColorRect" parent="Enviroment/Background/TextureRect7" unique_id=451912309]
+anchors_preset = -1
+anchor_left = -192.00002
+anchor_top = 130.097
+anchor_right = 288.0
+anchor_bottom = 173.18901
+offset_left = 1.5258789e-05
+offset_top = -0.0004119873
+offset_right = 3.0517578e-05
+offset_bottom = -0.0002593994
+color = Color(0.101960786, 0.05490196, 0.023529412, 1)
+
+[node name="TextureRect6" type="Sprite2D" parent="Enviroment/Background" unique_id=2042574629]
+z_index = -4
+texture_filter = 1
+position = Vector2(400, 279.41602)
+scale = Vector2(2.0833333, 2.5871854)
+texture = ExtResource("13_afptj")
+
+[node name="Rumah" type="Node2D" parent="Enviroment" unique_id=910894963]
+
+[node name="Sprite2D" type="Sprite2D" parent="Enviroment/Rumah" unique_id=1830253662]
+position = Vector2(584, 424)
+texture = ExtResource("10_l5gqx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Enviroment/Rumah" unique_id=50517755]
+position = Vector2(952, 448)
+texture = ExtResource("11_2j6rt")
+
+[node name="Gerbang" type="Node2D" parent="Enviroment" unique_id=2064716294]
+
+[node name="layer belakang" type="Sprite2D" parent="Enviroment/Gerbang" unique_id=552687442]
+z_index = -2
+position = Vector2(1080, 160)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_1ugdc")
+
+[node name="layer depan" type="Sprite2D" parent="Enviroment/Gerbang" unique_id=136715325]
+z_index = 3
+position = Vector2(1400, 428.00003)
+scale = Vector2(0.489, 0.5)
+texture = ExtResource("13_y8mqn")
+
+[node name="PlayerSafezone" parent="." unique_id=500546251 instance=ExtResource("19_yoe8e")]
+z_index = 1
+position = Vector2(72, 488.00003)
+scale = Vector2(0.79999995, 0.79999995)
+
+[node name="Merchant" parent="." unique_id=341880378 instance=ExtResource("19_afptj")]
+position = Vector2(861, 488)
+scale = Vector2(0.8, 0.8)
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." unique_id=1661582023]
+process_mode = 3
+stream = ExtResource("20_afptj")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="ResearchDashboard" parent="." unique_id=1977123514 instance=ExtResource("21_1ltfi")]
+visible = false

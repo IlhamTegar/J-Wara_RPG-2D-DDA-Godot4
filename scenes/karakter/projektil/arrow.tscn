@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dk3pcn0xmokqs"]
+
+[ext_resource type="Script" uid="uid://dbxb88lcdnqxq" path="res://scripts/Karakter/projektil/arrow.gd" id="1_fuixk"]
+[ext_resource type="Texture2D" uid="uid://3ivyns6l7tdg" path="res://assets/sprites/enemy/Export_Bow/Bow.png" id="1_s1dkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuixk"]
+size = Vector2(8, 8)
+
+[node name="Arrow" type="Area2D" unique_id=912100623 groups=["projektil"]]
+z_index = 3
+collision_layer = 16
+collision_mask = 26
+monitorable = false
+script = ExtResource("1_fuixk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1907051418]
+texture = ExtResource("1_s1dkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300779784]
+position = Vector2(25, 1)
+shape = SubResource("RectangleShape2D_fuixk")

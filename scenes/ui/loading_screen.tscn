@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cqhkf8jd104m7"]
+
+[ext_resource type="Script" uid="uid://cmr7w13n4xsbl" path="res://scripts/ui/loading_screen.gd" id="1_rqdcv"]
+[ext_resource type="Texture2D" uid="uid://c0ytp1xssu2l7" path="res://assets/sprites/ui/Under-Loading.png" id="2_5fj0j"]
+[ext_resource type="Texture2D" uid="uid://dwwejmcaekpei" path="res://assets/sprites/ui/progress-Loading.png" id="3_s2kth"]
+
+[node name="loading screen" type="Control" unique_id=1414300627]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rqdcv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=689545235]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.07058824, 0.07058824, 1)
+
+[node name="CeritaLabel" type="Label" parent="." unique_id=1897788734]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.089
+anchor_right = 0.90000004
+anchor_bottom = 0.711
+offset_top = -0.08000183
+offset_bottom = 0.07998657
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LoadingBar" type="TextureProgressBar" parent="." unique_id=319438213]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.711
+anchor_right = 0.85
+anchor_bottom = 0.767
+offset_top = 0.07998657
+offset_bottom = -0.23999023
+texture_under = ExtResource("2_5fj0j")
+texture_progress = ExtResource("3_s2kth")
+
+[node name="LanjutkanButton" type="Button" parent="." unique_id=797215]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45000002
+anchor_top = 0.78900003
+anchor_right = 0.55
+anchor_bottom = 0.85600007
+offset_top = -0.08001709
+offset_bottom = -0.32006836
+text = "Lanjutkan"
+
+[connection signal="pressed" from="LanjutkanButton" to="." method="_on_lanjutkan_button_pressed"]

@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://beyovgmbluef5"]
+
+[ext_resource type="Script" uid="uid://biw1jtcdefgt1" path="res://scripts/ui/inventory_combat.gd" id="1_857r5"]
+[ext_resource type="Texture2D" uid="uid://cip2qbgt2j6mx" path="res://assets/sprites/ui/Interface dasar/Humble Gift - v1.3/PNG/inventory.png" id="1_cjeq7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_857r5"]
+texture = ExtResource("1_cjeq7")
+
+[node name="InventoryCombat" type="CanvasLayer" unique_id=1983579155]
+layer = 11
+script = ExtResource("1_857r5")
+
+[node name="BagPanel" type="Panel" parent="." unique_id=5713550]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.256
+anchor_right = 0.75000006
+anchor_bottom = 0.53300005
+offset_top = -8.320007
+offset_right = -6.1035156e-05
+offset_bottom = -0.7600403
+theme_override_styles/panel = SubResource("StyleBoxTexture_857r5")
+
+[node name="SlotsGrid" type="GridContainer" parent="BagPanel" unique_id=687718588]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.155
+anchor_right = 0.975
+anchor_bottom = 0.92800003
+offset_top = -0.084999084
+offset_bottom = -0.0960083
+theme_override_constants/h_separation = 31
+theme_override_constants/v_separation = 13
+columns = 6
+
+[node name="Slot1" type="Button" parent="BagPanel/SlotsGrid" unique_id=1852349864]
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 2
+
+[node name="Slot2" type="Button" parent="BagPanel/SlotsGrid" unique_id=893842514]
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 2
+
+[node name="Slot3" type="Button" parent="BagPanel/SlotsGrid" unique_id=716903299]
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 2
+
+[node name="Slot4" type="Button" parent="BagPanel/SlotsGrid" unique_id=1904732820]
+custom_minimum_size = Vector2(74, 74)
+layout_mode = 2
+
+[node name="Slot5" type="Button" parent="BagPanel/SlotsGrid" unique_id=941376348]
+custom_minimum_size = Vector2(76, 74)
+layout_mode = 2
+
+[node name="Slot6" type="Button" parent="BagPanel/SlotsGrid" unique_id=913601761]
+custom_minimum_size = Vector2(76, 74)
+layout_mode = 2
+
+[node name="Slot7" type="Button" parent="BagPanel/SlotsGrid" unique_id=990263022]
+custom_minimum_size = Vector2(74, 75)
+layout_mode = 2
+
+[node name="Slot8" type="Button" parent="BagPanel/SlotsGrid" unique_id=707623364]
+custom_minimum_size = Vector2(74, 75)
+layout_mode = 2
+
+[node name="Slot9" type="Button" parent="BagPanel/SlotsGrid" unique_id=242593838]
+custom_minimum_size = Vector2(74, 75)
+layout_mode = 2
+
+[node name="Slot10" type="Button" parent="BagPanel/SlotsGrid" unique_id=879566284]
+custom_minimum_size = Vector2(74, 75)
+layout_mode = 2
+
+[node name="Slot11" type="Button" parent="BagPanel/SlotsGrid" unique_id=1861080529]
+custom_minimum_size = Vector2(76, 75)
+layout_mode = 2
+
+[node name="Slot12" type="Button" parent="BagPanel/SlotsGrid" unique_id=253517568]
+custom_minimum_size = Vector2(76, 75)
+layout_mode = 2
+
+[node name="GunakanButton" type="Button" parent="BagPanel" unique_id=911723705]
+visible = false
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 31.0
+text = "GUNAKAN"
+
+[node name="Label" type="Label" parent="BagPanel" unique_id=265452146]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32000002
+anchor_top = 0.0050000004
+anchor_right = 0.65500003
+anchor_bottom = 0.116000004
+offset_left = 0.19998169
+offset_top = -0.035000086
+offset_right = -0.2000122
+offset_bottom = -0.012001038
+text = "Inventory"
+horizontal_alignment = 1
