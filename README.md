@@ -1,6 +1,6 @@
 # 🗡️ RPG 2D Adaptif dengan Dynamic Difficulty Adjustment (DDA)
 
-![Godot Engine](https://img.shields.io/badge/Godot_Engine-4.x-blue?logo=godotengine)
+![Godot Engine](https://img.shields.io/badge/Godot_Engine-4.6.2-blue?logo=godotengine)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Testing](https://img.shields.io/badge/Testing-GUT_100%25_Passed-brightgreen)
 
