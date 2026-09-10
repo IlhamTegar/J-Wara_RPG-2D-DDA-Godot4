@@ -20,9 +20,15 @@ extends Node2D
 @onready var deskripsi_label: Label = $UI_Layer/TutorialPanelCombat/DeskripsiLabel
 @onready var selanjutnya_btn: Button = $UI_Layer/TutorialPanelCombat/SelanjutnyaButton
 @onready var tutuptuto_btn: Button = $UI_Layer/TutorialPanelCombat/TutupTutoButton
+@onready var buff_label: Label = $HUD_Layer/BuffLabel
 
 # --- DATA MATERI TUTORIAL COMBAT STEP-BY-STEP ---
 var combat_steps: Array = [
+	{
+		"judul": "ZONA PERTEMPURAN (ARENA COMBAT)",
+		"deskripsi": "Zona pertempuran aktif tempat Ksatria harus menghadapi gempuran gelombang musuh. Sistem DDA Mikro dan Makro akan terus memantau sisa HP dan tingkat keberhasilan parry/dodge milikmu secara real-time!",
+		"gambar": "res://assets/images/tutorial/combat/tuto-walk.png"
+	},
 	{
 		"judul": "Move atau Bergerak",
 		"deskripsi": "Tekan tombol W/A/S/D untuk menggerakkan karakter.",
@@ -73,6 +79,12 @@ var wave_timer: float = 0.0
 var spawn_cooldown: float = 3.0
 var base_spawn_cooldown: float = 3.0
 var time_since_last_spawn: float = 0.0
+
+var sedang_challenge_kroco: bool = false
+var challenge_kroco_timer: float = 0.0
+var durasi_challenge_target: float = 0.0
+var waktu_antar_spawn_kroco: float = 2.5
+var timer_spawn_kroco_lumpuh: float = 0.0
 
 func _ready() -> void:
 	GlobalGameManager.is_in_safezone = false
@@ -157,9 +169,22 @@ func _process(delta: float) -> void:
 			wave_timer -= delta
 			if wave_timer <= 0.0:
 				_spawn_boss_sesuai_wave(current_wave)
-		# 🛠️ FIX BUG 1 (Safety Net): Jika boss sudah muncul, cek keberadaannya secara real-time.
-		# Ini mencegah stuck apabila signal kematian boss tidak terkirim/terlewat.
+		
+		# 🛠️ TAMBAHAN CHALLENGE KROCO SAAT BOSS FIGHT (WAVE 3-5)
 		elif boss_spawned and not boss_defeated:
+			if sedang_challenge_kroco:
+				challenge_kroco_timer -= delta
+				timer_spawn_kroco_lumpuh += delta
+				
+				# Spawn monster kroco secara berkala selama durasi challenge aktif
+				if timer_spawn_kroco_lumpuh >= waktu_antar_spawn_kroco:
+					timer_spawn_kroco_lumpuh = 0.0
+					_spawn_kroco_challenge_boss()
+					
+				if challenge_kroco_timer <= 0.0:
+					sedang_challenge_kroco = false
+					print("[CHALLENGE BOSS] Waktu tantangan kroco selesai! Fokus penuh ke Boss utama.")
+
 			var bos_node = find_child("BOS_UTAMA", true, false)
 			if not bos_node or bos_node.is_queued_for_deletion() or ("current_health" in bos_node and bos_node.current_health <= 0):
 				_proses_kematian_boss()
@@ -246,6 +271,8 @@ func _spawn_boss_sesuai_wave(wave_num: int) -> void:
 	add_child(boss_instansi)
 	total_enemies_in_arena += 1
 	print("[BOSS] Peringatan! Bos Wave ", wave_num, " telah memasuki arena!")
+	
+	_mulai_challenge_kroco_boss(wave_num)
 
 func _on_enemy_died(tipe_musuh: int) -> void:
 	total_enemies_in_arena -= 1
@@ -302,12 +329,16 @@ func memicu_victory() -> void:
 	
 	var total_reward = (melee_killed_count * 10) + (ranged_killed_count * 15)
 	if current_wave >= 3: total_reward += 50
-	
-	# 🛠️ FIX OPSI A: Hapus atau beri tanda pagar (#) pada baris di bawah ini agar koin tidak double!
-	# GlobalGameManager.total_koin += total_reward
 		
 	if reward_label != null:
 		reward_label.text = "Hadiah Koin: +" + str(total_reward)
+		
+	# 🛠️ TAMPILKAN EVALUASI DDA DI VICTORY PANEL
+	var evaluasi_label = get_node_or_null("UI_Layer/Victory_Layer/Victory_Panel/EvaluasiLabel")
+	if evaluasi_label is Label:
+		evaluasi_label.text = "=== EVALUASI PERFORMA DDA ===\n" + \
+							  "• Rata-rata Kondisi HP : " + GlobalGameManager.kategori_rata_hp_terakhir + "\n" + \
+							  "• Performa Defensif   : " + GlobalGameManager.kategori_defensif_terakhir + " (" + str(snapped(GlobalGameManager.persentase_defensif_terakhir, 0.1)) + "%)"
 
 func memicu_defeated() -> void:
 	get_tree().paused = true
@@ -394,3 +425,47 @@ func perbarui_hp_bar_boss(hp_sekarang: float, hp_maksimal: float, _nama_boss: St
 			boss_bar.max_value = hp_maksimal
 			boss_bar.value = hp_sekarang
 			if hp_sekarang <= 0: boss_bar.visible = false
+
+# 🛠️ Dipanggil otomatis saat Boss muncul untuk memulai timer challenge
+func _mulai_challenge_kroco_boss(wave_num: int) -> void:
+	sedang_challenge_kroco = true
+	timer_spawn_kroco_lumpuh = 0.0
+	
+	if wave_num == 3:
+		durasi_challenge_target = 10.0 # 10 detik di Wave 3
+	elif wave_num == 4:
+		durasi_challenge_target = 15.0 # 15 detik di Wave 4
+	elif wave_num >= 5:
+		durasi_challenge_target = 20.0 # 20 detik di Wave 5
+		
+	challenge_kroco_timer = durasi_challenge_target
+	print("[CHALLENGE BOSS] Tantangan gempuran kroco dimulai selama: ", durasi_challenge_target, " detik!")
+
+# Fungsi khusus untuk memunculkan kroco pendukung saat challenge aktif
+func _spawn_kroco_challenge_boss() -> void:
+	if spawner_nodes.size() == 0: return
+	var titik_acak = spawner_nodes[randi() % spawner_nodes.size()]
+	if titik_acak == null: return
+	
+	# Memanggil musuh melee/ranged kroco
+	var scene_dipilih = enemy_melee_scene if randf() > 0.5 else enemy_ranged_scene
+	if scene_dipilih == null: return
+	
+	var kroco_instansi = scene_dipilih.instantiate()
+	var final_hp_mod = GlobalGameManager.enemy_hp_multiplier * GlobalGameManager.macro_dda_modifier
+	kroco_instansi.max_health = kroco_instansi.max_health * final_hp_mod
+	kroco_instansi.global_position = titik_acak.global_position
+	
+	add_child(kroco_instansi)
+	total_enemies_in_arena += 1
+
+func tampilkan_peringatan_stamina() -> void:
+	if is_instance_valid(buff_label):
+		buff_label.text = "Stamina kamu habis tunggu dulu ya"
+		buff_label.show()
+		
+		# Buat timer singkat selama 1.5 detik untuk menyembunyikan kembali labelnya
+		await get_tree().create_timer(1.5).timeout
+		if is_instance_valid(buff_label) and buff_label.text == "Stamina kamu habis tunggu dulu ya":
+			buff_label.text = "" # Bersihkan teks
+			buff_label.hide()

@@ -66,6 +66,14 @@ extends Control
 # --- REFERENSI KE NODE SETTINGS MENU ---
 @onready var settings_menu: Control = $UI_Layer/SettingsMenu
 
+# 🛠️ TAMBAHKAN KODE INI SESUAI STRUKTUR DI EDITOR GODOT-MU
+@onready var panel_konfirmasi: Control = $UI_Layer/LoadGamePanel/PanelKonfirmasi 
+@onready var label_informasi: Label = $UI_Layer/LoadGamePanel/PanelKonfirmasi/LabelInformasi
+@onready var tombol_ya: Button = $UI_Layer/LoadGamePanel/PanelKonfirmasi/TombolYa
+@onready var tombol_tidak: Button = $UI_Layer/LoadGamePanel/PanelKonfirmasi/TombolTidak
+
+var slot_sedang_dipilih: int = -1
+
 var player_name: String = ""
 
 func _ready() -> void:
@@ -120,6 +128,15 @@ func _ready() -> void:
 				black_overlay.visible = false
 				setting_btn.grab_focus()
 		)
+	
+	# Di dalam fungsi _ready() tambahkan baris ini:
+	if is_instance_valid(panel_konfirmasi):
+		panel_konfirmasi.hide()
+		
+	if is_instance_valid(tombol_ya):
+		tombol_ya.pressed.connect(_on_tombol_ya_pressed)
+	if is_instance_valid(tombol_tidak):
+		tombol_tidak.pressed.connect(_on_tombol_tidak_pressed)
 	
 	_update_slot_visuals()
 
@@ -206,19 +223,57 @@ func _update_slot_visuals() -> void:
 			all_titles[i].text = "Save Data " + str(slot_num)
 			all_waves[i].text = "- Kosong -"
 
+# 🛠️ GANTI FUNGSI INI DI MAIN_MENU.GD
 func _on_slot_pressed(slot_number: int) -> void:
-	if GlobalGameManager.has_method("load_dari_slot"):
-		var sukses_load = GlobalGameManager.load_dari_slot(slot_number)
-		if sukses_load:
-			# 🛠️ REKAM SLOT YANG SEDANG DIMAINKAN
-			GlobalGameManager.slot_aktif_sekarang = slot_number 
-			
-			print("Load berhasil dari Slot: ", slot_number)
-			GlobalGameManager.is_in_safezone = true
-			GlobalGameManager.next_scene_path = gameplay_scene
-			get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
+	slot_sedang_dipilih = slot_number
+	
+	if GlobalGameManager.has_method("dapatkan_info_slot"):
+		var info = GlobalGameManager.dapatkan_info_slot(slot_number)
+		
+		if is_instance_valid(label_informasi):
+			if info["status"] == "Kosong":
+				label_informasi.text = "=== SLOT " + str(slot_number) + " KOSONG ===\n\nBelum ada riwayat tersimpan."
+				if is_instance_valid(tombol_ya): tombol_ya.hide() # Sembunyikan tombol load jika slot kosong
+			else:
+				# Tampilkan rincian riwayat lengkap
+				label_informasi.text = "=== RIWAYAT SLOT " + str(slot_number) + " ===\n" + \
+									  "• Nama Ksatria : " + str(info["nama"]) + "\n" + \
+									  "• Progres Wave : Wave " + str(info["wave"]) + "\n" + \
+									  "• Total Koin   : " + str(info["koin"]) + " Koin\n\n" + \
+									  "• ISI INVENTORI TAS:\n" + \
+									  "  - Potion          : " + str(info["potion"]) + "\n" + \
+									  "  - Scroll Buff     : " + str(info["scroll"]) + "\n" + \
+									  "  - Scroll Unggulan : " + str(info["high_scroll"]) + "\n" + \
+									  "  - Ancient Scroll  : " + str(info["ancient_scroll"]) + "\n\n" + \
+									  "Ingin memuat game dari slot ini?"
+				if is_instance_valid(tombol_ya): tombol_ya.show()
+									  
+		if is_instance_valid(panel_konfirmasi):
+			panel_konfirmasi.show()
+			if is_instance_valid(tombol_ya) and tombol_ya.visible:
+				tombol_ya.grab_focus()
+			else:
+				tombol_tidak.grab_focus()
 
 func _on_close_load_pressed() -> void:
 	load_game_panel.visible = false
 	black_overlay.visible = false
 	load_game_btn.grab_focus()
+
+# Jika pemain menekan tombol "Ya" (Konfirmasi Load Game)
+func _on_tombol_ya_pressed() -> void:
+	if slot_sedang_dipilih != -1:
+		if GlobalGameManager.has_method("load_dari_slot"):
+			var sukses_load = GlobalGameManager.load_dari_slot(slot_sedang_dipilih)
+			if sukses_load:
+				GlobalGameManager.slot_aktif_sekarang = slot_sedang_dipilih 
+				print("Load berhasil dari Slot: ", slot_sedang_dipilih)
+				GlobalGameManager.is_in_safezone = true
+				GlobalGameManager.next_scene_path = gameplay_scene
+				get_tree().change_scene_to_file("res://scenes/ui/loading_screen.tscn")
+
+# Jika pemain menekan tombol "Tidak" (Batal)
+func _on_tombol_tidak_pressed() -> void:
+	slot_sedang_dipilih = -1
+	if is_instance_valid(panel_konfirmasi):
+		panel_konfirmasi.hide()

@@ -51,6 +51,10 @@ var belum_tutorial_combat: bool = true
 var slot_aktif_sekarang: int = 1
 var is_inventory_open: bool = false
 
+var kategori_rata_hp_terakhir: String = "Normal"
+var kategori_defensif_terakhir: String = "Sedang"
+var persentase_defensif_terakhir: float = 0.0
+
 func _ready() -> void:
 	muat_setelan_audio_lokal()
 
@@ -67,7 +71,7 @@ func siapkan_game_baru(nama_baru: String) -> void:
 	ancient_scroll_count = 0
 	print("[NEW GAME] Karakter Baru Dibuat!")
 
-# 🛠️ FIX UTAMA: Pemisahan fungsi reset agar data makro tidak terhapus di tengah pertempuran
+# FIX UTAMA: Pemisahan fungsi reset agar data makro tidak terhapus di tengah pertempuran
 func reset_data_mikro_saja() -> void:
 	mikro_damage_diterima = 0.0
 	mikro_potion_digunakan = false
@@ -165,66 +169,101 @@ func hitung_fuzzy_mikro(player_hp_percent: float) -> void:
 func hitung_fuzzy_makro() -> void:
 	print("\n=== [🧠 FUZZY SUGENO MAKRO START] ===")
 	
-	# 🛠️ FIX UTAMA: Batasi maksimal persen_defensif di angka 100.0% menggunakan minf()
+	# Batasi maksimal persen_defensif di angka 100.0%
 	var persen_defensif = 0.0
 	if makro_usaha_defensif > 0:
 		persen_defensif = minf(100.0, (float(makro_sukses_defensif) / float(makro_usaha_defensif)) * 100.0)
 		
 	print("Review Akhir Wave -> HP Berkurang: ", makro_total_hp_berkurang, " | Sukses Defensif: ", persen_defensif, "%")
 	
-	# 1. FUZZIFIKASI INPUT 1: Total HP Berkurang (Rendah, Tinggi)
+	# 1. FUZZIFIKASI INPUT 1 & 2
 	var mu_hp_rendah = max(0.0, min(1.0, (60.0 - makro_total_hp_berkurang) / 60.0)) if makro_total_hp_berkurang <= 60.0 else 0.0
 	var mu_hp_tinggi = max(0.0, min(1.0, (makro_total_hp_berkurang - 30.0) / 50.0)) if makro_total_hp_berkurang >= 30.0 else 0.0
 	
-	# FUZZIFIKASI INPUT 2: Persentase Keberhasilan Defensif (Buruk, Bagus)
 	var mu_def_buruk = max(0.0, min(1.0, (50.0 - persen_defensif) / 50.0)) if persen_defensif <= 50.0 else 0.0
 	var mu_def_bagus = max(0.0, min(1.0, (persen_defensif - 40.0) / 50.0)) if persen_defensif >= 40.0 else 0.0
 	
-	# 2. INFERENSI RULE & DEFINISI KONSTANTA OUTPUT SUGENO (Z)
+	# 2. INFERENSI RULE SUGENO ORDE-0
 	var w1 = min(mu_hp_tinggi, mu_def_buruk)
 	var z1 = 0.80
 	
 	var w2 = min(mu_hp_rendah, mu_def_bagus)
-	var z2 = 1.35
+	var z2 = 1.35 # (Atau 1.5 jika menggunakan bobot sulit penuh)
 	
 	var w3 = min(mu_hp_rendah, mu_def_buruk)
 	var z3 = 1.05
 	
-	# 3. DEFUZZIFIKASI SUGENO (Weighted Average / Rata-Rata Terbobot)
+	# 3. DEFUZZIFIKASI SUGENO (Weighted Average)
 	var total_w = w1 + w2 + w3
 	var hasil_sugeno = 1.0
-	
 	if total_w > 0:
 		hasil_sugeno = ((w1 * z1) + (w2 * z2) + (w3 * z3)) / total_w
 		
-	print("Defuzzifikasi Sugeno (Weighted Average) -> Multiplier Base: ", hasil_sugeno)
-	
-	# 4. APLIKASI OUTPUT LANGSUNG KE VARIABEL MAKRO WAVE
 	macro_dda_modifier = hasil_sugeno
+	print("Defuzzifikasi Sugeno -> Multiplier Base: ", macro_dda_modifier)
+	
+	# 4. 🛠️ PENYESUAIAN POIN 4: PERKALIAN SUGENO + PENAMBAHAN MANUAL WAVE
+	# Tentukan nilai penambahan manual per wave (misal +2 musuh setiap naik wave)
+	var penambahan_manual_wave = (current_wave - 1) * 2 
 	
 	if macro_dda_modifier < 0.95:
-		wave_total_spawn_target = 10
-		wave_duration = 45.0
-		boss_hp_multiplier = 0.80
-		boss_damage_multiplier = 0.85
+		spawner_jumlah_musuh = int(5 * macro_dda_modifier) + penambahan_manual_wave
+		
+		# Khusus Wave 3-5 (Boss Challenge), atur target spawn tantangan kroco lebih ringan
+		if current_wave >= 3:
+			wave_total_spawn_target = int(10 * macro_dda_modifier) + penambahan_manual_wave
+			boss_hp_multiplier = 0.80
+			boss_damage_multiplier = 0.85
+		else:
+			wave_total_spawn_target = 10 # Default untuk survival awal
+			
 		total_koin += 75
-		print("[DDA Makro - Sugeno] Hasil: SENSOR KESUSAHAN -> Wave Berikutnya Dipermudah.")
+		print("[DDA Makro] Dipermudah | Spawner: ", spawner_jumlah_musuh, " | Target Boss Challenge: ", wave_total_spawn_target)
+		
 	elif macro_dda_modifier > 1.15:
-		wave_total_spawn_target = 22
-		wave_duration = 80.0
-		boss_hp_multiplier = 1.35
-		boss_damage_multiplier = 1.25
+		spawner_jumlah_musuh = int(7 * macro_dda_modifier) + penambahan_manual_wave
+		
+		# Khusus Wave 3-5 (Boss Challenge), atur target spawn tantangan kroco menjadi sangat agresif
+		if current_wave >= 3:
+			wave_total_spawn_target = int(22 * macro_dda_modifier) + penambahan_manual_wave
+			boss_hp_multiplier = 1.35 * macro_dda_modifier
+			boss_damage_multiplier = 1.25 * macro_dda_modifier
+		else:
+			wave_total_spawn_target = 18
+			
 		total_koin += 250
-		print("[DDA Makro - Sugeno] Hasil: SENSOR TERLALU MUDAH -> Wave Berikutnya Diperketat.")
+		print("[DDA Makro] Diperketat | Spawner: ", spawner_jumlah_musuh, " | Target Boss Challenge: ", wave_total_spawn_target)
+		
 	else:
-		wave_total_spawn_target = 15
-		wave_duration = 60.0
-		boss_hp_multiplier = 1.05
-		boss_damage_multiplier = 1.05
+		spawner_jumlah_musuh = int(6 * macro_dda_modifier) + penambahan_manual_wave
+		
+		# Khusus Wave 3-5 (Boss Challenge), atur target spawn tantangan kroco dalam kondisi normal/stabil
+		if current_wave >= 3:
+			wave_total_spawn_target = int(15 * macro_dda_modifier) + penambahan_manual_wave
+			boss_hp_multiplier = 1.05
+			boss_damage_multiplier = 1.05
+		else:
+			wave_total_spawn_target = 15
+			
 		total_koin += 150
-		print("[DDA Makro - Sugeno] Hasil: SENSOR STABIL -> Parameter Normal.")
+		print("[DDA Makro] Normal | Spawner: ", spawner_jumlah_musuh, " | Target Boss Challenge: ", wave_total_spawn_target)
 
-	# 🛠️ FIX UTAMA: Bersihkan data makro murni setelah evaluasi selesai dicetak
+	if makro_total_hp_berkurang < 25.0:
+		kategori_rata_hp_terakhir = "Sehat"
+	elif makro_total_hp_berkurang <= 55.0:
+		kategori_rata_hp_terakhir = "Sedang"
+	else:
+		kategori_rata_hp_terakhir = "Kritis"
+		
+	persentase_defensif_terakhir = persen_defensif
+	if persen_defensif >= 70.0:
+		kategori_defensif_terakhir = "Baik"
+	elif persen_defensif >= 40.0:
+		kategori_defensif_terakhir = "Sedang"
+	else:
+		kategori_defensif_terakhir = "Buruk"
+
+	# Bersihkan data pencatatan makro setelah dihitung
 	reset_data_makro_saja()
 
 # ===================================================================
@@ -233,12 +272,12 @@ func hitung_fuzzy_makro() -> void:
 func save_ke_slot(slot_number: int) -> void:
 	var path_file = "user://save_slot_" + str(slot_number) + ".save"
 	var data_save = {
-		"player_name": player_name,                  # 🛠️ SUNTIKKAN INI: Simpan nama pemain
+		"player_name": player_name,                  
 		"current_wave": current_wave, 
 		"total_koin": total_koin, 
 		"player_points": player_points,
-		"potion_count": potion_count, 
-		"scroll_count": scroll_count,
+		"potion_count": potion_count,         # 🛠️ Disimpan
+		"scroll_count": scroll_count,         # 🛠️ Disimpan
 		"high_scroll_count": high_scroll_count,      
 		"ancient_scroll_count": ancient_scroll_count,  
 		"item_dibeli": item_dibeli,
@@ -279,7 +318,9 @@ func load_dari_slot(slot_number: int) -> bool:
 
 func dapatkan_info_slot(slot_number: int) -> Dictionary:
 	var path_file = "user://save_slot_" + str(slot_number) + ".save"
-	if not FileAccess.file_exists(path_file): return {"status": "Kosong", "wave": 0, "koin": 0, "nama": "Kosong"}
+	if not FileAccess.file_exists(path_file): 
+		return {"status": "Kosong", "wave": 0, "koin": 0, "nama": "Kosong", "potion": 0, "scroll": 0, "high_scroll": 0, "ancient_scroll": 0}
+		
 	var file = FileAccess.open(path_file, FileAccess.READ)
 	if file:
 		var baris_data = file.get_line()
@@ -287,14 +328,18 @@ func dapatkan_info_slot(slot_number: int) -> Dictionary:
 		var json = JSON.new()
 		if json.parse(baris_data) == OK:
 			var data = json.get_data()
-			# 🛠️ SUNTIKAN UTAMA: Kembalikan dictionary yang membawa data "player_name"
+			# 🛠️ Kembalikan seluruh rincian inventori tas beserta data dasarnya
 			return {
 				"status": "Ada Data", 
 				"wave": data.get("current_wave", 1), 
 				"koin": data.get("total_koin", 0),
-				"nama": data.get("player_name", "Tanpa Nama")
+				"nama": data.get("player_name", "Tanpa Nama"),
+				"potion": data.get("potion_count", 0),
+				"scroll": data.get("scroll_count", 0),
+				"high_scroll": data.get("high_scroll_count", 0),
+				"ancient_scroll": data.get("ancient_scroll_count", 0)
 			}
-	return {"status": "Kosong", "wave": 0, "koin": 0, "nama": "Kosong"}
+	return {"status": "Kosong", "wave": 0, "koin": 0, "nama": "Kosong", "potion": 0, "scroll": 0, "high_scroll": 0, "ancient_scroll": 0}
 
 func simpan_setelan_action_audio(bus_name: String, value: float) -> void:
 	var config = ConfigFile.new()

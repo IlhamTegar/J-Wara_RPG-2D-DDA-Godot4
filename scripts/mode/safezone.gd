@@ -11,6 +11,11 @@ extends Node2D
 # --- DATA MATERI TUTORIAL SAFEZONE STEP-BY-STEP ---
 var safezone_steps: Array = [
 	{
+		"judul": "AREA AMAN (SAFEZONE)",
+		"deskripsi": "Wilayah desa steril yang sepenuhnya bebas dari ancaman monster. Berinteraksilah dengan NPC Merchant untuk berbelanja item atau gunakan Buku Save untuk mengamankan progres permainan. Dekati portal keluar desa di sebelah kanan untuk mulai memasuki zona pertempuran.",
+		"gambar": "res://assets/images/tutorial/safezone/tuto-safezone.png"
+	},
+	{
 		"judul": "WALK / PERGERAKAN KARAKTER",
 		"deskripsi": "Tekan tombol A/D pada keyboard untuk menggerakkan karakter.",
 		"gambar": "res://assets/images/tutorial/safezone/tuto-safe-walk.png"

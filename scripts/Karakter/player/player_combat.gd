@@ -106,6 +106,8 @@ func _physics_process(delta: float) -> void:
 			return
 		else:
 			print("[⚠️ SYSTEM] Stamina tidak cukup untuk melakukan Dash!")
+			# 👈 TAMBAHKAN PEMICU NOTICE STAMINA DI SINI
+			_tampilkan_notice_stamina_habis()
 
 	#if Input.is_action_just_pressed("serang"):
 		#_eksekusi_serangan_kombo_baru()
@@ -353,8 +355,19 @@ func _update_tampilan_hud() -> void:
 	if hud_layer != null:
 		var hp_bar = hud_layer.get_node_or_null("HUD_Panel/HP_Bar")
 		var stamina_bar = hud_layer.get_node_or_null("HUD_Panel/Stamina_Bar")
-		if hp_bar is TextureProgressBar: hp_bar.value = current_health
-		if stamina_bar is TextureProgressBar: stamina_bar.value = current_stamina
+		
+		# 👈 TAMBAHKAN KODE INI UNTUK MUNCULKAN ANGKA 80/100
+		var hp_label = hud_layer.get_node_or_null("HUD_Panel/HP_Bar/HP_Label")
+		
+		if hp_bar is TextureProgressBar: 
+			hp_bar.value = current_health
+			
+		if stamina_bar is TextureProgressBar: 
+			stamina_bar.value = current_stamina
+			
+		# 👈 UPDATE TEKS NUMERIK KE LAYAR
+		if hp_label is Label:
+			hp_label.text = str(int(current_health)) + " / " + str(int(max_health))
 
 func _set_teks_buff_hud(teks: String) -> void:
 	print("\n--- [🔍 RADAR BUFF HUD] Pemicu Aktif ---")
@@ -540,3 +553,19 @@ func gunakan_ancient_scroll() -> void:
 		SPEED = 150.0
 		attack_multiplier = 1.0
 		_set_teks_buff_hud("")
+
+func _tampilkan_notice_stamina_habis() -> void:
+	if hud_layer == null: return
+	var label_buff = hud_layer.get_node_or_null("HUD_Panel/BuffLabel")
+	if label_buff == null:
+		label_buff = hud_layer.find_child("BuffLabel", true, false)
+		
+	if label_buff is Label:
+		label_buff.text = "Stamina kamu habis tunggu dulu ya"
+		label_buff.show()
+		
+		# Timer 1.5 detik sebelum teks notice dibersihkan kembali
+		await get_tree().create_timer(1.5).timeout
+		if is_instance_valid(label_buff) and label_buff.text == "Stamina kamu habis tunggu dulu ya":
+			label_buff.text = ""
+			label_buff.hide()
